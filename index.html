@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Friendship Card from Kishan to Aman Jiju</title>
+  <style>
+    body {
+      background: #000;
+      color: #0f0;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 30px;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    #terminal {
+      max-width: 900px;
+      font-size: 1.1em;
+      white-space: pre-wrap;
+      line-height: 1.6;
+      text-shadow: 0 0 5px #0f0;
+      margin-top: 20px;
+    }
+    img {
+      max-width: 250px;
+      border: 4px solid #0f0;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #0f0;
+    }
+    .neon-blue { color: #00f0ff; text-shadow: 0 0 10px #00f0ff; }
+    .neon-pink { color: #ff00ff; text-shadow: 0 0 10px #ff00ff; }
+    .neon-yellow { color: #ffff00; text-shadow: 0 0 10px #ffff00; }
+    .surprise {
+      color: #fff;
+      text-shadow: 
+        0 0 5px #f0f, 
+        0 0 10px #0ff, 
+        0 0 15px #ff0, 
+        0 0 20px #0f0;
+      font-weight: bold;
+      margin-top: 20px;
+      font-size: 1.3em;
+    }
+  </style>
+</head>
+<body>
+  <img src="https://i.ibb.co/20JjdHx4/IMG-20250803-193752.jpg" alt="Kishan and Aman Jiju" />
+  <div id="terminal"></div>
+  <audio id="typeSound" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
+
+  <script>
+    const lines = [
+      "> Initializing FRIENDSHIP_HACKER_PROTOCOL...",
+      "> Establishing secure tunnel to Aman Jiju...",
+      "> Tunnel connected via ❤️. Encrypted link: [KISHAN --> AMAN JIJU]",
+      "> Sending hugs.exe and support.dat...",
+      "",
+      ">> WISHES_FROM_KISHAN = [",
+      "'You're not just a friend, you're my backup system. 💚',",
+      "'In the infinite loop of life, you’re my constant.',",
+      "'You helped me reboot when I crashed. 💻',",
+      "'You’re the Aman Jiju in every console.log(\"BestFriend\")',",
+      "'We share more memories than a 1TB drive.',",
+      "'Our bond is 256-bit encrypted. Unbreakable.',",
+      "'From noob to pro, thanks for being by my side.',",
+      "'You’re not a variable, you’re a constant I need. ❤️'", 
+      "];",
+      "",
+      "> GIFT.sender = 'Kishan';",
+      "> GIFT.receiver = '<span class=\"neon-yellow\">Aman Jiju</span>';",
+      "> GIFT.status = 'Delivered ✅';",
+      "",
+      ">>> print('Happy Friendship Day Aman Jiju! Stay epic 💻💚')",
+      ">>> Connection closed with gratitude_protocol 🙂"
+    ];
+
+    const surpriseText = "🎉 Surprise! Real friendship needs no logic — just loyalty. Thanks for being that kind of friend, Aman Jiju. 🚀💚";
+
+    const terminal = document.getElementById("terminal");
+    const typeSound = document.getElementById("typeSound");
+
+    let currentLine = 0;
+
+    function typeLine() {
+      if (currentLine >= lines.length) {
+        setTimeout(() => showSurprise(), 1000);
+        return;
+      }
+
+      const rawText = lines[currentLine];
+      const lineElement = document.createElement("div");
+
+      let displayText = rawText
+        .replace(/Aman Jiju/g, '<span class="neon-yellow">Aman Jiju</span>')
+        .replace(/GIFT/g, '<span class="neon-pink">GIFT</span>')
+        .replace(/print/g, '<span class="neon-blue">print</span>');
+
+      terminal.appendChild(lineElement);
+
+      let i = 0;
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = displayText;
+      const plainText = tempDiv.textContent || tempDiv.innerText || "";
+
+      const interval = setInterval(() => {
+        if (i < plainText.length) {
+          lineElement.innerHTML = displayText.slice(0, i + 1);
+          typeSound.currentTime = 0;
+          typeSound.play();
+          i++;
+        } else {
+          clearInterval(interval);
+          currentLine++;
+          setTimeout(typeLine, 500);
+        }
+      }, 35);
+    }
+
+    function showSurprise() {
+      const surprise = document.createElement("div");
+      surprise.className = "surprise";
+      surprise.innerHTML = surpriseText.replace(/Aman Jiju/g, '<span class="neon-yellow">Aman Jiju</span>');
+      terminal.appendChild(surprise);
+    }
+
+    typeLine();
+  </script>
+</body>
+  </html>
